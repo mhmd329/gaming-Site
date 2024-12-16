@@ -1,10 +1,5 @@
-import RootLayout from "./{grid}/layout";
+import RootLayout from "./(grid)/layout";
 
 export default function Home() {
-  return (
-   <main>
-  
-
-   </main>
-  );
+  return <main></main>;
 }

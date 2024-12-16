@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
 import "./globals.css";
-import Laout from "./{grid}/layout";
-
-const montserrat = Montserrat ({weight:['300','400','700'],subsets:["latin"]})
+import { Montserrat } from "next/font/google";
+const montserrat = Montserrat({
+  weight: ["300", "400", "700"],
+  subsets: ["latin"],
+});
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import QueryProvider from "@/lip/QueryProvider";
 export const metadata: Metadata = {
-  title: "gaming ",
-  description: "this is a gaming website",
+  title: "Gaming Boi",
+  description: "this is a gaming website ",
 };
 
 export default function RootLayout({
@@ -16,10 +20,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className}dark antialiased`}>
-       <Laout children={undefined}/>
-        {children}
-        
+      <body className={` ${montserrat.className}  dark antialiased`}>
+        <QueryProvider>
+          <ToastContainer
+            position="top-center"
+            autoClose={2500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            pauseOnFocusLoss
+            pauseOnHover={false}
+            theme="dark"
+          />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );
